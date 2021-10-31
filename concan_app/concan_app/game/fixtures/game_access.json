@@ -1,0 +1,16 @@
+[
+  {
+    "model": "game.gameaccess",
+    "pk": 1,
+    "fields": {
+      "ref_code": "PUBLIC"
+    }
+  },
+  {
+    "model": "game.gameaccess",
+    "pk": 2,
+    "fields": {
+      "ref_code": "PRIVATE"
+    }
+  }
+]

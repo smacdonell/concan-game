@@ -1,0 +1,23 @@
+[
+  {
+    "model": "game.gamestatus",
+    "pk": 1,
+    "fields": {
+      "ref_code": "LOBBY"
+    }
+  },
+  {
+    "model": "game.gamestatus",
+    "pk": 2,
+    "fields": {
+      "ref_code": "IN_PROGRESS"
+    }
+  },
+  {
+    "model": "game.gamestatus",
+    "pk": 3,
+    "fields": {
+      "ref_code": "FINISHED"
+    }
+  }
+]

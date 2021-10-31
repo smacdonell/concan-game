@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class GameConfig(AppConfig):
-    name = 'game'
+    name = 'concan_app.game'

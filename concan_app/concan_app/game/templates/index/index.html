@@ -1,0 +1,54 @@
+{% extends 'common/template.html' %}
+
+{% block body %}
+    <div class="wrapper">
+        <div class="title">
+            <h1>Concan Game</h1>
+        </div>
+
+        {% if new_game_form.errors %}
+            {% for field in new_game_form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in new_game_form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="content">
+            <label for="name_field">Your Name:</label>
+            <input type="text" id="name_field" />
+
+            <form action="{% url 'index' %}" method="post">
+                {% csrf_token %}
+
+                {{ new_game_form.game_name.errors }}
+                <label for="id_new_{{ new_game_form.game_name.html_name }}">Game Name</label>
+                <input type="text" id="id_new_{{ new_game_form.game_name.html_name }}" name="{{ new_game_form.game_name.html_name }}" />
+
+                <input type="hidden" class="player_name_input" id="id_{{ new_game_form.player_name.html_name }}" name="{{ new_game_form.player_name.html_name }}" />
+                <input type="submit" name="start_new_sub" value="Start New Game" />
+            </form>
+
+            <form action="{% url 'index' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" class="player_name_input" id="id_{{ join_existing_game_form.player_name.html_name }}" name="{{ join_existing_game_form.player_name.html_name }}" />
+                <input type="hidden" id="id_{{ join_existing_game_form.game_id.html_name }}" name="{{ join_existing_game_form.game_id.html_name }}" />
+
+                <select>
+                    {% for lobby in open_lobbies %}
+                        <option value="{{ lobby.id }}">{{ lobby.name }}</option>
+                    {% endfor %}`
+                </select>
+
+                <input type="submit" name="join_existing_sub" value="Join Existing Game" />
+            </form>
+        </div>
+    </div>
+{% endblock %}
